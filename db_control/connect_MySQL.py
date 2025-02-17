@@ -3,6 +3,12 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
+# `.env` のパスを取得
+env_path = Path(__file__).resolve().parent.parent / '.env'
+
+# `.env` をロード
+load_dotenv(dotenv_path=env_path)
+
 # 環境変数の読み込み
 base_path = Path(__file__).parents[1]  # backendディレクトリへのパス
 # env_path = base_path / '.env'
@@ -12,7 +18,7 @@ base_path = Path(__file__).parents[1]  # backendディレクトリへのパス
 DB_USER = os.getenv('DB_USER')
 DB_PASSWORD = os.getenv('DB_PASSWORD')
 DB_HOST = os.getenv('DB_HOST')
-DB_PORT = os.getenv('DB_PORT')
+DB_PORT = os.getenv('DB_PORT', '3306')
 DB_NAME = os.getenv('DB_NAME')
 
 # SSL証明書のパス
